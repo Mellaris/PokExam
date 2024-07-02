@@ -1,0 +1,114 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1515" d:DesignHeight="1300"
+        x:Class="AnimeCafe.FinalBasket"
+		Width="1515"
+		WindowState="FullScreen"
+		x:CompileBindings="False"
+		CanResize="True"
+        Title="FinalBasket">
+	<Window.Styles>
+		<Style Selector="TextBlock.H1">
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="Foreground" Value="#5A4C35"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+		</Style>
+		<Style Selector="MenuItem.Menu">
+			<Setter Property="FontSize" Value="24"/>
+			<Setter Property="Foreground" Value="#5A4C35"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+		</Style>
+		<Style Selector="MenuItem.MenuSpan">
+			<Setter Property="FontSize" Value="24"/>
+			<Setter Property="Foreground" Value="#877A64"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+		</Style>
+		<Style Selector="TextBlock.H2">
+			<Setter Property="FontSize" Value="64"/>
+			<Setter Property="Foreground" Value="#53451F"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="TextBlock.BasketText">
+			<Setter Property="Foreground" Value="#5A4C35"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="TextBlock.TextBusk">
+			<Setter Property="Foreground" Value="#5A4C35"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="FontSize" Value="40"/>
+		</Style>
+	</Window.Styles>
+	<ScrollViewer>
+		<Grid RowDefinitions="Auto,Auto,Auto">
+			<StackPanel Height="45" Grid.Row="0" Background="#FFF9EA">
+				<Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+
+					<TextBlock Classes="H1" Margin="55,19,0,0" Grid.Column="0">Время работы пн-вс 10-23</TextBlock>
+					<Image></Image>
+					<TextBlock Classes="H1" Margin="109,19,0,0" Grid.Column="1">E-mail: animecafe@gmail.com</TextBlock>
+					<Image></Image>
+					<TextBlock Classes="H1" Margin="109,19,0,0" Grid.Column="2">+ 7 (981) 909-99-00</TextBlock>
+					<Button Click="Account" Background="#EDD9D3" Margin="298,12,0,0" Grid.Column="3">
+						<TextBlock>Аккаунт</TextBlock>
+					</Button>
+					<Button Click="BasketShop" Background="#EDD9D3" Margin="20,12,0,0" Grid.Column="4">
+						<TextBlock>Корзина</TextBlock>
+					</Button>
+				</Grid>
+			</StackPanel>
+			<StackPanel Height="1309" Grid.Row="1" Background="#FFF9EA">
+				<TextBlock Classes="H2" Margin="0,44,0,0">Завершение</TextBlock>
+				<Menu HorizontalAlignment="Center" Margin="0,53,0,0" Grid.Row="0">
+					<MenuItem Click="Main_Click" Classes="Menu" Header="Главная"></MenuItem>
+					<MenuItem Click="Menu_Click" Classes="Menu" Margin="120,0,0,0" Header="Меню"></MenuItem>
+					<MenuItem Click="Cafes" Classes="Menu" Margin="120,0,0,0" Header="Наши кафе"></MenuItem>
+					<MenuItem Click="Sale_Click" Classes="Menu" Margin="120,0,0,0" Header="Акции"></MenuItem>
+					<MenuItem Click="Blog_Click" Classes="Menu" Margin="120,0,0,0" Header="Блог"></MenuItem>
+					<MenuItem Click="Shop_Click" Classes="Menu" Margin="120,0,0,0" Header="Магазин"></MenuItem>
+				</Menu>
+				<StackPanel>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Margin="76,108,0,0" Classes="TextBusk">Итого:</TextBlock>
+						<TextBlock Foreground="#FF7C7C" Classes="TextBusk" Margin="50,108,0,0" Name="sumAll"></TextBlock>
+						<StackPanel Margin="320,0,0,0" Orientation="Horizontal">
+							<TextBlock Margin="76,108,0,0" Classes="TextBusk">Скидка:</TextBlock>
+							<TextBlock Foreground="#FF7C7C" Classes="TextBusk" Margin="50,108,0,0" Name="sale"></TextBlock>
+						</StackPanel>
+					</StackPanel>
+
+					<TextBlock Margin="92,64,0,0" Classes="TextBusk">Использовать промокод:</TextBlock>
+					<TextBlock Background="White" Name="promo" HorizontalAlignment="Left" Margin="76,39,0,0" Width="555" Height="81"></TextBlock>
+					<StackPanel Orientation="Horizontal">
+						<Button Click="OpenText" Margin="60,37,0,0" Width="250" Height="63" CornerRadius="10" HorizontalAlignment="Center" Background="#EDD9D3">
+							<TextBlock Margin="0,6,0,0" FontSize="36" FontWeight="Medium" HorizontalAlignment="Center" Foreground="#FF7C7C">Вставить</TextBlock>
+						</Button>
+						<Button Click="ClosePromo" Margin="100,37,0,0" Width="250" Height="63" CornerRadius="10" HorizontalAlignment="Center" Background="#EDD9D3">
+							<TextBlock Margin="0,6,0,0" FontSize="36" FontWeight="Medium" HorizontalAlignment="Center" Foreground="#FF7C7C">Отменить</TextBlock>
+						</Button>
+					</StackPanel>
+					<TextBlock Foreground="#FF7C7C" FontSize="36" TextAlignment="Center"  Margin="50,60,0,0" Name="mas"></TextBlock>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Margin="20,0,0,0" Classes="TextBusk">Ваши бонусы: </TextBlock>
+					<TextBlock Name="bonus" FontWeight="Bold" Foreground="#FF7C7C" FontSize="36" TextAlignment="Center" Margin="20,0,0,0" HorizontalAlignment="Left"  Background="#EDD9D3" Width="400"></TextBlock>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<Button Click="NullAllBonus" Margin="20,37,0,0" Width="409" Height="63" CornerRadius="10" HorizontalAlignment="Left" Background="#EDD9D3">
+						<TextBlock Margin="0,6,0,0" FontSize="36" FontWeight="Medium" HorizontalAlignment="Center" Foreground="#FF7C7C">Списать все бонусы</TextBlock>
+					</Button>
+					<TextBlock Classes="TextBusk" Margin="20,40,0,0">Или</TextBlock>
+					<Button Click="BackBonus" Margin="20,37,0,0" Width="609" Height="63" CornerRadius="10" HorizontalAlignment="Left" Background="#EDD9D3">
+						<TextBlock Margin="0,6,0,0" FontSize="36" FontWeight="Medium" HorizontalAlignment="Center" Foreground="#FF7C7C">Отменить списание бонусов</TextBlock>
+					</Button>
+				</StackPanel>
+				
+				</StackPanel>
+			</Grid>
+	</ScrollViewer>
+</Window>
